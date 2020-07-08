@@ -1,12 +1,12 @@
 ### File Paths (config_fp...)
 ######################################################################################################
 # Raw Data
-config_fp_raw_data_dir = 'D:/insurance_data/'
+config_fp_raw_data_dir = 'D:/Projects/Rating_Functionality_R/DATA/'
 config_fp_raw_train_file = 'train.csv'
 config_fp_raw_test_file = 'test.csv'
 
 # Processed Data
-config_fp_proc_data_dir = 'D:/processed_insurance_data/'
+config_fp_proc_data_dir = 'D:/Projects/Rating_Functionality_R/processed_data/'
 
 
 ### Packages (config_pkg...)
@@ -35,15 +35,12 @@ config_save_name_single_varimp_plot = 'feature_importance/feature_importance_out
 config_save_name_recommended_features = 'feature_importance/feature_importance_output/recommended_features.csv'
 config_save_name_alpha_lambda_grid = 'feature_importance/feature_importance_output/alpha_lambda_grid_search.csv'
 config_save_name_tweedie_grid = 'feature_importance/feature_importance_output/tweedie_grid_search.csv'
-config_save_name_xgb_grid = 'feature_importance/feature_importance_output/xgb_grid_search.csv'
 config_save_name_glm_test_pred = paste0(config_fp_proc_data_dir, 'glm_prediction_output.csv')
-config_save_name_xgb_test_pred = paste0(config_fp_proc_data_dir, 'xgb_prediction_output.csv')
-config_save_name_glm_model = 'D:/model_save/glm/'
-config_save_name_xgb_model = 'D:/model_save/xgb/xgb_model.rds'
+config_save_name_glm_model = 'D:/Projects/Rating_Functionality_R/model_save/'
 
 ### GLM Hyperparameters to Tune (config_hparam...)
 ######################################################################################################
-config_hparam_alpha_lambda_list = list(lambda = c(0, 0.00001, 0.00005, 0.0001, 0.0005, 0.001),
+config_hparam_alpha_lambda_list = list(lambda = c(0, 0.00001, 0.00005, 0.0001, 0.0005, 0.001, seq(.1, 1, 0.15), seq(.1,0,-.01)),
                                        alpha = seq(0, 1, 0.1))
 
 config_hparam_tweedie_list = list(tweedie_variance_power = seq(1.05, 1.95, 0.05))
@@ -63,7 +60,7 @@ config_static_param_xgb = list(stopping_rounds = 20,
                                nfolds = 10)
 
 config_xgb_search_strategy = list(strategy = config_static_param_xgb[['strategy']],
-                                  max_models = config_static_param_xgb[['max_models']], 
+                                  max_models = config_static_param_xgb[['max_models']],
                                   seed = config_static_param_xgb[['seed']],
                                   stopping_rounds = config_static_param_xgb[['stopping_rounds']],
                                   stopping_tolerance = config_static_param_xgb[['stopping_tolerance']],
